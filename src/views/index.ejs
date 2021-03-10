@@ -1,0 +1,128 @@
+<% include partials/_header%>
+
+  <div class="container has-padding-top-50">
+    <div class="search-content">
+      <form class="form-inline my-2 my-lg-0">
+        <div class="columns is-mobile">
+          <div class="column">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="search" placeholder="Nombre" aria-label="Codigo" id="inputSearchName"
+                  onkeyup="SearchName()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="is-form">
+    <form action="/add" method="post">
+
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column">
+            <div class="field">
+              <label class="label">Nombre</label>
+              <div class="control">
+                <input class="input" name="name" type="text" required>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Apellido</label>
+              <div class="control">
+                <input class="input" name="lastname" type="text" required>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Fecha de nacimiento</label>
+              <div class="control">
+                <input class="input" name="date" type="text" required>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Telefono</label>
+              <div class="control">
+                <input class="input" name="phone" type="text" required>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Doctora</label>
+              <div class="control">
+                <div class="select">
+                  <select name="doctora">
+                    <option>Seleccionar Doctora</option>
+                    <option value="Karina Luquez">Karina Luquez</option>
+                    <option value="Etilvia Yepez">Etilvia Yepez</option>
+                    <option value="Katherine Cataño">Katherine Cataño</option>
+                    <option value="Elianys Carrillo">Elianys Carrillo</option>
+                    <option value="Isabella">Isabella</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button is-link" type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <div class="is-table-content">
+    <div class="table-container">
+      <table class="table is-bordered" id="table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de nacimiento</th>
+            <th>Telefono</th>
+            <th>Doctora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < laboratorios.length; i++){ %>
+            <tr>
+              <td>
+                <%= i + 1%>
+              </td>
+              <td>
+                <%= laboratorios[i].name %>
+              </td>
+              <td>
+                <%= laboratorios[i].lastname %>
+              </td>
+              <td>
+                <%= laboratorios[i].date %>
+              </td>
+              <td>
+                <%= laboratorios[i].phone %>
+              </td>
+              <td>
+                <%= laboratorios[i].doctora %>
+              </td>
+              <td class="is-flex">
+                <a href="/enable/<%= laboratorios[i]._id %>"
+                  class="button <%= laboratorios[i].status ? '' : 'is-success'  %>">Habilitado</a>
+                <a class="button is-danger" href="/delete/<%= laboratorios[i]._id %>">Eliminar</a>
+                <a class="button is-info" href="/edit/<%= laboratorios[i]._id %>">Editar</a>
+                <!-- <a class="button is-info" href="/print/<%= laboratorios[i]._id %>">Imprimir</a> -->
+              </td>
+            </tr>
+            <% } %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% include partials/_footer%>

@@ -1,0 +1,66 @@
+<% include partials/_header %>
+  <section class="section"></section>
+
+  <div class="is-form">
+    <form action="../pdfMake/pdf" method="post">
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column">
+            <div class="field">
+              <label class="label">Nombre</label>
+              <div class="control">
+                <input class="input" name="name" value="<%= laboratorio.name %>" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Apellido</label>
+              <div class="control">
+                <input class="input" name="lastname" value="<%= laboratorio.lastname %>" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Fecha de nacimiento</label>
+              <div class="control">
+                <input class="input" name="date" value="<%= laboratorio.date %>" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Teléfono</label>
+              <div class="control">
+                <input class="input" name="phone" value="<%= laboratorio.phone %>" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label">Doctora</label>
+              <div class="control">
+                <div class="select">
+                  <select name="doctora">
+                    <option>
+                      <%= laboratorio.doctora %>
+                    </option>
+                    <option value="Karina Luquez">Karina Luquez</option>
+                    <option value="Etilvia Yepez">Etilvia Yepez</option>
+                    <option value="Katherine Cataño">Katherine Cataño</option>
+                    <option value="Elianys Carrillo">Elianys Carrillo</option>
+                    <option value="Isabella">Isabella</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button is-link" type="submit">Imprimir</button>
+    </form>
+
+  </div>
+
+  <% include partials/_footer %>
